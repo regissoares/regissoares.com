@@ -1,0 +1,13 @@
+{
+  "name": "regissoares.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "4.6.3"
+  }
+}
