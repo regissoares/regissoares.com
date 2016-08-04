@@ -23,6 +23,35 @@ module.exports = function (grunt) {
         ]
       }
     },
+    watch: {
+      main: {
+        files: ['index.html', 'robots.txt'],
+        tasks: ['copy:main']
+      },
+      css: {
+        files: ['css/**/*'],
+        tasks: ['concat']
+      }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          base: 'dist',
+          keepalive: true,
+          debug: true,
+          open: true
+        }
+      }
+    },
+    concurrent: {
+      dev: {
+        tasks: ['watch', 'connect'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
     aws_s3: {
       options: {
         accessKeyId: '<%= aws.AWSAccessKeyId %>',
@@ -32,7 +61,7 @@ module.exports = function (grunt) {
       prod: {
         options: {
           bucket: 'regissoares.com',
-          differential: false
+          differential: true
         },
         files: [
           {
@@ -49,9 +78,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-aws-s3');
 
-  grunt.registerTask('default', ['concat', 'copy']);
   grunt.registerTask('build', ['concat', 'cssmin', 'copy']);
+  grunt.registerTask('build:dev', ['concat', 'copy']);
   grunt.registerTask('publish', ['build', 'aws_s3']);
+  grunt.registerTask('default', ['build:dev', 'concurrent:dev']);
 };
