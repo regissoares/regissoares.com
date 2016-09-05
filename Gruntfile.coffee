@@ -1,12 +1,12 @@
 module.exports = (grunt) ->
   grunt.initConfig
-    aws: grunt.file.readJSON('aws-keys.json')
+    aws: grunt.file.readJSON "aws-keys.json"
     concat:
       "dist/css/style.css": ["bower_components/font-awesome/css/font-awesome.css", "css/reset.css", "css/style.css"]
     htmlmin:
       dist:
         options: collapseWhitespace: true
-        files: "dist/index.html": "index.html"
+        files: "dist/index.html": "dist/index.html"
     cssmin: "dist/css/style.css": "dist/css/style.css"
     copy:
       main:
@@ -63,7 +63,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-concurrent"
   grunt.loadNpmTasks "grunt-aws-s3"
 
-  grunt.registerTask "build", ["concat", "htmlmin", "cssmin", "copy"]
+  grunt.registerTask "build", ["concat", "cssmin", "copy", "htmlmin"]
   grunt.registerTask "build:dev", ["concat", "copy"]
   grunt.registerTask "publish", ["build", "aws_s3"]
   grunt.registerTask "default", ["build:dev", "concurrent:dev"]
