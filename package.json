@@ -1,21 +1,17 @@
 {
   "name": "regissoares.com",
   "version": "0.0.1",
-  "description": "Página pessoal de Régis Soares",
-  "author": {
-    "name": "Régis Soares",
-    "email": "regis@regissoares.com"
-  },
-  "dependencies": {
+  "description": "Régis Soares [--]>",
+  "author": "Régis Soares <regis@regissoares.com>",
+  "devDependencies": {
     "grunt": "1.0.1",
     "grunt-aws-s3": "0.14.5",
     "grunt-concurrent": "2.3.0",
     "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-connect": "1.0.2",
     "grunt-contrib-copy": "1.0.0",
     "grunt-contrib-cssmin": "1.0.1",
+    "grunt-contrib-htmlmin": "2.0.0",
     "grunt-contrib-watch": "1.0.0"
-  },
-  "devDependencies": {
-    "grunt-contrib-connect": "1.0.2"
   }
 }

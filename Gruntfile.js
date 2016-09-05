@@ -4,12 +4,22 @@ module.exports = function (grunt) {
     concat: {
       'dist/css/style.css': ['bower_components/font-awesome/css/font-awesome.css', 'css/reset.css', 'css/style.css']
     },
+    htmlmin: {
+      dist: {
+        options: {
+          collapseWhitespace: true
+        },
+        files: {
+          'dist/index.html': 'index.html'
+        }
+      }
+    },
     cssmin: {
       'dist/css/style.css': 'dist/css/style.css'
     },
     copy: {
       main: {
-        src: ['index.html', 'robots.txt'],
+        src: ['robots.txt'],
         dest: 'dist/'
       },
       fonts: {
@@ -76,6 +86,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -83,7 +94,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-aws-s3');
 
-  grunt.registerTask('build', ['concat', 'cssmin', 'copy']);
+  grunt.registerTask('build', ['concat', 'htmlmin', 'cssmin', 'copy']);
   grunt.registerTask('build:dev', ['concat', 'copy']);
   grunt.registerTask('publish', ['build', 'aws_s3']);
   grunt.registerTask('default', ['build:dev', 'concurrent:dev']);
