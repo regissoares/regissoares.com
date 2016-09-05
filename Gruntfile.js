@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     },
     copy: {
       main: {
-        src: ['robots.txt'],
+        src: ['index.html', 'robots.txt'],
         dest: 'dist/'
       },
       fonts: {
