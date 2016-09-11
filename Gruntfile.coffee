@@ -2,7 +2,7 @@ module.exports = (grunt) ->
   grunt.initConfig
     aws: grunt.file.readJSON "aws-keys.json"
     concat:
-      "dist/css/style.css": ["bower_components/font-awesome/css/font-awesome.css", "css/reset.css", "css/style.css"]
+      "dist/css/style.css": ["bower_components/font-awesome/css/font-awesome.css", "bower_components/reset-css/reset.css", "css/style.css"]
     htmlmin:
       dist:
         options: collapseWhitespace: true
