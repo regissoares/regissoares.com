@@ -1,8 +1,7 @@
 module.exports = (grunt) ->
   grunt.initConfig
     aws: grunt.file.readJSON "aws-keys.json"
-    concat:
-      "dist/css/style.css": ["bower_components/font-awesome/css/font-awesome.css", "bower_components/reset-css/reset.css", "css/style.css"]
+    concat: "dist/css/style.css": ["bower_components/font-awesome/css/font-awesome.css", "bower_components/reset-css/reset.css", "css/style.css"]
     htmlmin:
       dist:
         options: collapseWhitespace: true
@@ -19,6 +18,7 @@ module.exports = (grunt) ->
           src: ["**"]
           dest: "dist/fonts/"
         ]
+    clean: ["dist"]
     watch:
       main:
         files: ["index.html", "robots.txt"]
@@ -43,7 +43,7 @@ module.exports = (grunt) ->
         accessKeyId: "<%= aws.AWSAccessKeyId %>"
         secretAccessKey: "<%= aws.AWSSecretKey %>"
         region: "sa-east-1"
-      prod:
+      publish:
         options:
           bucket: "regissoares.com"
           differential: true
@@ -58,12 +58,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-htmlmin"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-copy"
+  grunt.loadNpmTasks "grunt-contrib-clean"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-concurrent"
   grunt.loadNpmTasks "grunt-aws-s3"
 
-  grunt.registerTask "build", ["concat", "cssmin", "copy", "htmlmin"]
-  grunt.registerTask "build:dev", ["concat", "copy"]
-  grunt.registerTask "publish", ["build", "aws_s3"]
-  grunt.registerTask "default", ["build:dev", "concurrent:dev"]
+  grunt.registerTask "build", ["clean", "copy", "concat"]
+  grunt.registerTask "build:prod", ["build", "htmlmin", "cssmin"]
+  grunt.registerTask "publish", ["build:prod", "aws_s3"]
+  grunt.registerTask "default", ["build", "concurrent:dev"]
