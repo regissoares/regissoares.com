@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: #ecf0f1;
   font-family: 'Handlee', cursive;
@@ -13,57 +18,70 @@ a:hover {
   color: #34495e;
 }
 
-#main {
-  padding: 2.5em;
-  text-align: center;
-}
-
-h1, h3 {
-  margin: 0.6em 0;
-}
-
 h1 {
-  font-size: 2.5em;
+  margin-bottom: 0.5em;
+  font-size: 3em;
 }
 
 h3 {
-  font-size: 1.6em;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
 }
 
-address {
-  margin: 1.2em 0;
-  font-size: 1.2em;
+nav {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 nav a {
-  margin: 0 0.4em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
-.avatar {
-  border-radius: 50%;
-  width: 10em;
-  height: 10em;
+nav i.fa {
+  font-size: 3em;
+}
+
+address {
+  font-size: 1em;
+}
+
+#main {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: table;
 }
 
 @media screen and (min-width: 720px) {
-  #main {
-    padding: 5em;
-  }
-
-  h1, h3 {
-    margin: 0.5em 0;
-  }
-
   h1 {
-    font-size: 3.5em;
+    font-size: 6em;
   }
 
   h3 {
-    font-size: 1.8em;
+    font-size: 3em;
   }
 
-  .avatar {
-    width: auto;
-    height: auto;
+  nav {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  nav a {
+    margin-right: 1.5em;
+    margin-left: 1.5em;
+  }
+
+  nav i.fa {
+    font-size: 6em;
+  }
+
+  address {
+    font-size: 1.6em;
   }
 }
