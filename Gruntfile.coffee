@@ -39,12 +39,11 @@ module.exports = (grunt) ->
         tasks: ["watch", "connect"]
         options: logConcurrentOutput: true
     aws_s3:
-      options:
-        accessKeyId: "<%= aws.AWSAccessKeyId %>"
-        secretAccessKey: "<%= aws.AWSSecretKey %>"
-        region: "sa-east-1"
       publish:
         options:
+          accessKeyId: "<%= aws.AWSAccessKeyId %>"
+          secretAccessKey: "<%= aws.AWSSecretKey %>"
+          region: "sa-east-1"
           bucket: "regissoares.com"
           differential: true
         files: [
