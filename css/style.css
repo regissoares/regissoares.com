@@ -30,7 +30,6 @@ h3 {
 
 nav {
   margin-top: 2em;
-  margin-bottom: 2em;
 }
 
 nav a {
@@ -40,10 +39,6 @@ nav a {
 
 nav i.fa {
   font-size: 3em;
-}
-
-address {
-  font-size: 1em;
 }
 
 #main {
@@ -69,7 +64,6 @@ address {
 
   nav {
     margin-top: 3em;
-    margin-bottom: 3em;
   }
 
   nav a {
@@ -79,9 +73,5 @@ address {
 
   nav i.fa {
     font-size: 6em;
-  }
-
-  address {
-    font-size: 1.6em;
   }
 }
