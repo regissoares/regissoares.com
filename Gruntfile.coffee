@@ -9,7 +9,7 @@ module.exports = (grunt) ->
     cssmin: "dist/css/style.css": "dist/css/style.css"
     copy:
       main:
-        src: ["index.html", "robots.txt"]
+        src: ["index.html", "robots.txt", "img/**/*"]
         dest: "dist/"
       fonts:
         files: [
@@ -21,7 +21,7 @@ module.exports = (grunt) ->
     clean: ["dist"]
     watch:
       main:
-        files: ["index.html", "robots.txt"]
+        files: ["index.html"]
         tasks: ["copy:main"]
       css:
         files: ["css/**/*"]
@@ -44,7 +44,7 @@ module.exports = (grunt) ->
           accessKeyId: "<%= aws.AWSAccessKeyId %>"
           secretAccessKey: "<%= aws.AWSSecretKey %>"
           region: "sa-east-1"
-          bucket: "regissoares.com"
+          bucket: "regissoares.com.br"
           differential: true
         files: [
           expand: true
