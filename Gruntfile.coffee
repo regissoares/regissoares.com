@@ -1,4 +1,13 @@
 module.exports = (grunt) ->
+  grunt.loadNpmTasks "grunt-contrib-concat"
+  grunt.loadNpmTasks "grunt-contrib-htmlmin"
+  grunt.loadNpmTasks "grunt-contrib-cssmin"
+  grunt.loadNpmTasks "grunt-contrib-copy"
+  grunt.loadNpmTasks "grunt-contrib-clean"
+  grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-contrib-connect"
+  grunt.loadNpmTasks "grunt-aws-s3"
+
   grunt.initConfig
     aws: grunt.file.readJSON "aws-keys.json"
     concat: "dist/css/style.css": ["bower_components/font-awesome/css/font-awesome.css", "bower_components/reset-css/reset.css", "css/style.css"]
@@ -8,7 +17,7 @@ module.exports = (grunt) ->
         files: "dist/index.html": "dist/index.html"
     cssmin: "dist/css/style.css": "dist/css/style.css"
     copy:
-      main:
+      dist:
         src: ["index.html", "robots.txt", "img/**/*"]
         dest: "dist/"
       fonts:
@@ -20,24 +29,21 @@ module.exports = (grunt) ->
         ]
     clean: ["dist"]
     watch:
-      main:
+      html:
         files: ["index.html"]
-        tasks: ["copy:main"]
+        tasks: ["copy:dist"]
       css:
         files: ["css/**/*"]
         tasks: ["concat"]
     connect:
       server:
         options:
-          port: 8000
+          port: 3000
           base: "dist"
           keepalive: true
           debug: true
+          livereload: true
           open: true
-    concurrent:
-      dev:
-        tasks: ["watch", "connect"]
-        options: logConcurrentOutput: true
     aws_s3:
       publish:
         options:
@@ -53,17 +59,7 @@ module.exports = (grunt) ->
           dest: "/"
         ]
 
-  grunt.loadNpmTasks "grunt-contrib-concat"
-  grunt.loadNpmTasks "grunt-contrib-htmlmin"
-  grunt.loadNpmTasks "grunt-contrib-cssmin"
-  grunt.loadNpmTasks "grunt-contrib-copy"
-  grunt.loadNpmTasks "grunt-contrib-clean"
-  grunt.loadNpmTasks "grunt-contrib-watch"
-  grunt.loadNpmTasks "grunt-contrib-connect"
-  grunt.loadNpmTasks "grunt-concurrent"
-  grunt.loadNpmTasks "grunt-aws-s3"
-
   grunt.registerTask "build", ["clean", "copy", "concat"]
   grunt.registerTask "build:prod", ["build", "htmlmin", "cssmin"]
   grunt.registerTask "publish", ["build:prod", "aws_s3"]
-  grunt.registerTask "default", ["build", "concurrent:dev"]
+  grunt.registerTask "default", ["build", "connect", "watch"]
