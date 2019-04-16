@@ -54,7 +54,6 @@ module.exports = (grunt) ->
           port: 3000
           hostname: "localhost"
           base: "dist"
-          # keepalive: true
           debug: true
           livereload: true
           open: true
