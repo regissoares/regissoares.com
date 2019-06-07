@@ -63,7 +63,7 @@ module.exports = (grunt) ->
           accessKeyId: "<%= aws.AWSAccessKeyId %>"
           secretAccessKey: "<%= aws.AWSSecretKey %>"
           region: "sa-east-1"
-          bucket: "regissoares.com"
+          bucket: "regissoares.com.br"
           differential: true
         files: [
           expand: true

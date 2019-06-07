@@ -64,10 +64,6 @@ main {
   display: table;
 }
 
-.link-br {
-  font-size: 1em;
-}
-
 @media screen and (min-width: 720px) {
   h1 {
     font-size: 6em;
@@ -89,9 +85,5 @@ main {
 
   nav i.fa {
     font-size: 6em;
-  }
-
-  .link-br {
-    font-size: 1.2em;
   }
 }
