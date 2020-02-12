@@ -7,9 +7,9 @@ body {
   background: url(../img/bg.jpg) no-repeat center center fixed;
   background-size: cover;
   background-color: #34495e;
-  font-family: 'Handlee', cursive;
+  font-family: 'Mansalva', cursive;
   font-size: 16px;
-  text-shadow: 1px 1px 1px #555;
+
 }
 
 body,
@@ -27,7 +27,8 @@ a:hover {
 
 h1,
 h3 {
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
+  font-weight: normal;
 }
 
 h1 {
@@ -35,17 +36,15 @@ h1 {
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 nav {
-  margin-top: 2em;
-  margin-bottom: 3em;
+  margin: 1.5em 0;
 }
 
 nav a {
-  margin-right: 0.5em;
-  margin-left: 0.5em;
+  margin: 0 0.5em;
 }
 
 nav i.fa {
@@ -62,28 +61,4 @@ main {
   width: 100%;
   height: 100%;
   display: table;
-}
-
-@media screen and (min-width: 720px) {
-  h1 {
-    font-size: 6em;
-  }
-
-  h3 {
-    font-size: 3em;
-  }
-
-  nav {
-    margin-top: 3em;
-    margin-bottom: 6em;
-  }
-
-  nav a {
-    margin-right: 1.5em;
-    margin-left: 1.5em;
-  }
-
-  nav i.fa {
-    font-size: 6em;
-  }
 }

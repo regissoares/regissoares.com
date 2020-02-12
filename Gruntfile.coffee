@@ -2,11 +2,11 @@ mozjpeg = require "imagemin-mozjpeg"
 
 module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-clean"
+  grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-htmlmin"
   grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-imagemin"
-  grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-aws-s3"
@@ -14,6 +14,17 @@ module.exports = (grunt) ->
   grunt.initConfig
     aws: grunt.file.readJSON "aws-keys.json"
     clean: ["dist"]
+    copy:
+      dist:
+        src: ["index.html", "robots.txt"]
+        dest: "dist/"
+      fonts:
+        files: [
+          expand: true
+          cwd: "bower_components/font-awesome/fonts/"
+          src: ["**"]
+          dest: "dist/fonts/"
+        ]
     concat: "dist/css/style.css": ["bower_components/reset-css/reset.css", "bower_components/font-awesome/css/font-awesome.css", "css/style.css"]
     htmlmin:
       dist:
@@ -27,17 +38,6 @@ module.exports = (grunt) ->
           progressive: false
           use: [mozjpeg quality: 35]
         files: "dist/img/bg.jpg": "img/bg.jpg"
-    copy:
-      dist:
-        src: ["index.html", "robots.txt"]
-        dest: "dist/"
-      fonts:
-        files: [
-          expand: true
-          cwd: "bower_components/font-awesome/fonts/"
-          src: ["**"]
-          dest: "dist/fonts/"
-        ]
     watch:
       html:
         files: ["index.html"]
