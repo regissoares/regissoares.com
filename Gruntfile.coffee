@@ -21,11 +21,11 @@ module.exports = (grunt) ->
       fonts:
         files: [
           expand: true
-          cwd: "bower_components/font-awesome/fonts/"
+          cwd: "bower_components/font-awesome/webfonts/"
           src: ["**"]
-          dest: "dist/fonts/"
+          dest: "dist/webfonts/"
         ]
-    concat: "dist/css/style.css": ["bower_components/reset-css/reset.css", "bower_components/font-awesome/css/font-awesome.css", "css/style.css"]
+    concat: "dist/css/style.css": ["bower_components/reset-css/reset.css", "bower_components/font-awesome/css/all.css", "css/style.css"]
     htmlmin:
       dist:
         options: collapseWhitespace: true

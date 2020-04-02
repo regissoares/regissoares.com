@@ -8,7 +8,7 @@
     "tests"
   ],
   "dependencies": {
-    "font-awesome": "4.6.3",
-    "reset-css": "2.0.2011012603"
+    "font-awesome": "^5.13.0",
+    "reset-css": "^5.0.1"
   }
 }
