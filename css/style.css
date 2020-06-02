@@ -52,10 +52,11 @@ a:hover {
 
 .social {
   margin: 40px 0;
+  font-size: 0;
 }
 
 .social a {
-  margin: 0 8px;
+  margin: 0 10px;
 }
 
 .social .fa,
@@ -70,6 +71,6 @@ a:hover {
 
 .linguagens li {
   display: inline-block;
-  padding: 5px;
+  margin: 5px;
   font-size: 18px;
 }
