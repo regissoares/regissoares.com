@@ -16,7 +16,7 @@ module.exports = (grunt) ->
     clean: ["dist"]
     copy:
       dist:
-        src: ["index.html", "robots.txt"]
+        src: ["index.html", "favicon.ico", "robots.txt"]
         dest: "dist/"
       fonts:
         files: [
