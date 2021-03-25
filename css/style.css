@@ -6,14 +6,14 @@ body {
 body {
   font-family: 'Mansalva', cursive;
   font-size: 16px;
-  color: #ecf0f1;
+  color: #fff;
   background: url(../img/bg.jpg) no-repeat center center fixed;
   background-size: cover;
   background-color: #34495e;
 }
 
 a {
-  color: #ecf0f1;
+  color: #fff;
 }
 
 a {
@@ -21,7 +21,7 @@ a {
 }
 
 a:hover {
-  color: #fff;
+  color: #ecf0f1;
 }
 
 .wrapper {
